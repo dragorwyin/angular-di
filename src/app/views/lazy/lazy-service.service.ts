@@ -1,5 +1,4 @@
 import { Injectable, Injector } from '@angular/core';
-import { APP_CONFIG } from '../../config/config.token';
 
 import { Logger } from '../../logger/logger';
 import { loggerFactory } from '../../logger/logger-provider';

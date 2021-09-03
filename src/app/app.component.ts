@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   constructor(private logger: LoggerService) {}
 
   ngOnInit() {
-    console.log(this.logger);
     this.logger.log('blah');
   }
 

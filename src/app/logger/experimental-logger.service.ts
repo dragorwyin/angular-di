@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { AppConfig, APP_CONFIG } from '../config/config.token';
+import { Reporter } from '../reporter/reporter';
+import { REPORTERS } from '../reporter/reporter.token';
 import { Logger } from './logger';
 
 @Injectable({
@@ -7,10 +8,15 @@ import { Logger } from './logger';
 })
 export class ExperimentalLoggerService implements Logger {
   prefix = 'root';
+  counter = 0;
 
-  constructor() {}
+  constructor(@Inject(REPORTERS) private reporters: ReadonlyArray<Reporter>) {}
 
   log(message: string): void {
-    console.log(`${this.prefix} experimental: ${message}`);
+    this.counter += 1;
+    this.reporters.forEach((r) => r.report());
+    console.log(
+      `${this.prefix} experimental called ${this.counter} time: ${message}`
+    );
   }
 }

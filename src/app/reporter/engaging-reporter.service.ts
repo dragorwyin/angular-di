@@ -7,8 +7,13 @@ import { Reporter } from './reporter';
 export class EngagingReporterService implements Reporter {
   constructor() {}
 
+  counter = 0;
+
   report(): void {
-    // counter ...
-    console.log('Engaging report: User has been using app ... seconds');
+    this.counter += 1;
+    console.log(`
+      Engaging report: User has been using app ... seconds
+      It was called ${this.counter} time.
+    `);
   }
 }
